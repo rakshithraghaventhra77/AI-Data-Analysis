@@ -53,3 +53,7 @@ htmlcov/
 # Logs
 *.log
 logs/
+
+#csv files
+olist_orders_dataset.csv
+olist_order_items_dataset.csv
