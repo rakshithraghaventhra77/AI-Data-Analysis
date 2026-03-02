@@ -21,6 +21,11 @@ project/
 ├── analysis.py            # Statistical analysis functions
 ├── metrics.py             # Business metric calculations
 ├── insights.py            # Business insight generation
+├── templates/
+│   └── index.html         # Frontend dashboard (served by Flask)
+├── static/
+│   ├── app.js             # Frontend API integration logic
+│   └── styles.css         # Frontend styling
 ├── requirements.txt       # Python dependencies
 └── README.md              # This file
 ```
@@ -62,6 +67,7 @@ Flask application with the following endpoints:
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/health` | GET | API health check |
+| `/` | GET | Frontend dashboard |
 | `/metrics` | GET | Key business metrics |
 | `/order-status` | GET | Order status distribution |
 | `/monthly-trend` | GET | Monthly trend analysis |
@@ -108,7 +114,20 @@ Start the Flask development server:
 python app.py
 ```
 
-The API will be available at `http://localhost:5000`
+The application will be available at `http://localhost:5000`
+
+- Dashboard UI: `http://localhost:5000/`
+- API endpoints: `http://localhost:5000/metrics`, `http://localhost:5000/order-status`, etc.
+
+## End-to-End Completion Steps
+
+1. Place dataset `olist_orders_dataset.csv` inside the `project` folder.
+2. Create and activate virtual environment.
+3. Install dependencies using `pip install -r requirements.txt`.
+4. Start server with `python app.py`.
+5. Open browser to `http://localhost:5000/` for the frontend dashboard.
+6. Validate API responses from endpoint URLs.
+7. (Optional) Add ML models and PDF export module for full project objectives.
 
 ## API Endpoints
 

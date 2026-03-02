@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Powered Data Analysis Generator</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <div class="layout">
+    <header class="header">
+      <div class="header-content">
+        <h1>📊 AI Powered Data Analysis Generator</h1>
+        <p>Olist Order Analytics Dashboard</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="downloadPDF()">📄 PDF Report</button>
+        <button class="btn btn-primary" onclick="exportCSV()">📥 Export CSV</button>
+        <button class="btn btn-secondary" onclick="refreshData()">🔄 Refresh</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- AI Chatbot Section -->
+      <section class="card full">
+        <h2>💬 AI Chatbot - Ask Questions About Your Data</h2>
+        <div class="chatbot-container">
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+              <p>👋 Hi! I'm your AI data analysis assistant powered by Google Gemini. Ask me questions about your data like:</p>
+              <ul>
+                <li>"How many total orders do we have?"</li>
+                <li>"What's the average delivery time?"</li>
+                <li>"Show me the order status breakdown"</li>
+                <li>"What are the key insights from this data?"</li>
+              </ul>
+            </div>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Ask a question about your data..." />
+            <button class="btn btn-primary" onclick="sendChatMessage()">Send</button>
+          </div>
+        </div>
+      </section>
+            </div>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Ask a question about your data..." />
+            <button class="btn btn-primary" onclick="sendChatMessage()">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Metrics Section -->
+      <section class="card full">
+        <h2>📈 Key Performance Indicators</h2>
+        <div id="metrics" class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon">📦</div>
+            <div class="metric-content">
+              <div class="metric-label">Total Orders</div>
+              <div class="metric-value" id="total-orders">-</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">⏱️</div>
+            <div class="metric-content">
+              <div class="metric-label">Avg Delivery (days)</div>
+              <div class="metric-value" id="avg-delivery">-</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">⚠️</div>
+            <div class="metric-content">
+              <div class="metric-label">Late Delivery %</div>
+              <div class="metric-value" id="late-pct">-</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">✅</div>
+            <div class="metric-content">
+              <div class="metric-label">On-Time Deliveries</div>
+              <div class="metric-value" id="on-time-count">-</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts Section -->
+      <div class="grid-2">
+        <section class="card">
+          <h2>📊 Order Status Distribution</h2>
+          <canvas id="statusChart"></canvas>
+        </section>
+
+        <section class="card">
+          <h2>📦 Delivery Performance</h2>
+          <canvas id="deliveryChart"></canvas>
+        </section>
+      </div>
+
+      <!-- Monthly Trend -->
+      <section class="card full">
+        <h2>📅 Monthly Order Trends</h2>
+        <canvas id="trendChart" style="max-height: 300px;"></canvas>
+      </section>
+
+      <!-- Data Tables -->
+      <div class="grid-2">
+        <section class="card">
+          <h2>🏢 Order Status Breakdown</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Count</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody id="status-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>📍 Delivery Summary</h2>
+          <ul id="delivery-list" class="stats-list"></ul>
+        </section>
+      </div>
+
+      <!-- AI Insights -->
+      <section class="card full">
+        <h2>🤖 AI-Generated Insights</h2>
+        <div class="insight-box">
+          <pre id="insight-text">Loading insights...</pre>
+        </div>
+      </section>
+
+      <!-- ML Analysis Section -->
+      <div class="grid-2">
+        <section class="card">
+          <h2>🔮 Predictions</h2>
+          <div id="predictions" class="predictions-list"></div>
+        </section>
+
+        <section class="card">
+          <h2>⚠️ Anomalies</h2>
+          <div id="anomalies" class="anomalies-list"></div>
+        </section>
+      </div>
+
+      <section class="card full">
+        <h2>🎯 Clustering Analysis</h2>
+        <div id="clustering" class="clustering-info"></div>
+      </section>
+
+      <!-- Data Quality -->
+      <section class="card full">
+        <h2>🔍 Data Quality Report</h2>
+        <div id="quality-report" class="quality-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 AI Powered Data Analysis Generator | Team Project | Status: <span id="status">Ready</span></p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
